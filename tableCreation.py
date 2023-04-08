@@ -16,7 +16,7 @@ class MyTable(Base):
     name = Column(String(255))
     isStaff = Column(Integer)
 
-Base.metadata.create_all(engine)
+print(Base.metadata.create_all(engine))
 Session.commit()
-    
+
 
