@@ -8,10 +8,6 @@ connection = pymysql.connect(
 )
 
 cursor = connection.cursor()
-cursor.execute("create table ")
-cursor.execute("SELECT * FROM my_table")
 result = cursor.fetchall()
-
-print(result)
 
 connection.close()
