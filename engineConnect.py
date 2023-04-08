@@ -1,3 +1,5 @@
+# connection to the sql container running on linux terminal using pymysql
+
 import pymysql
 
 connection = pymysql.connect(
@@ -7,7 +9,6 @@ connection = pymysql.connect(
     database="mysql",
 )
 
-cursor = connection.cursor()
-result = cursor.fetchall()
-
-connection.close()
+# cursor = connection.cursor()
+# result = cursor.fetchall()
+# connection.close()
