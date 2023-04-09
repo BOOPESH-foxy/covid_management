@@ -8,7 +8,8 @@ MySQL command line tools
 
       mysql -u root -p
       
-3. After you log in, you can use the SHOW DATABASES; command to list all available databases:
+3. After you log in, you can use the below given command to list all available databases and tables:
 
       SHOW DATABASES;
+      
       SHOW TABLES;
