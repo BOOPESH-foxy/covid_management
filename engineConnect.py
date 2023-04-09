@@ -8,7 +8,3 @@ connection = pymysql.connect(
     password="password",
     database="mysql",
 )
-
-# cursor = connection.cursor()
-# result = cursor.fetchall()
-# connection.close()
