@@ -1,6 +1,5 @@
-from sqlalchemy import create_engine,Column,Integer,String
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy.orm import declarative_base, sessionmaker
 import sqlalchemyDbconnect
 
 
@@ -15,8 +14,9 @@ class MyTable(Base):
     Id = Column(Integer, primary_key=True)
     name = Column(String(255))
     isStaff = Column(Integer)
-
-print(Base.metadata.create_all(engine))
+row = MyTable(Id = 1001,name='John Doe', isStaff = 0)
+Session.add(row)
+Base.metadata.create_all(engine)
 Session.commit()
 
 
