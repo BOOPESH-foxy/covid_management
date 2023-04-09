@@ -1,11 +1,23 @@
 from sqlalchemy import create_engine
 import mysql.connector
 import sqlalchemyDbconnect as db
+import pwinput
 
-engine = create_engine(url = db.url)
-conn = engine.connect()
-result = conn.execute('SELECT * FROM Authentication')
+class loginPage:
+    def __init__(self) -> None:
+        pass
 
-for row in result:
-    print(row)
-conn.close()
+    
+    def getData(self):
+        print("|\t\t\t COVID VACCINATION BOOKING \t\t\t|")
+        name = input("NAME : \t")
+        password = input()
+    
+    def pageSelection(self):
+        pass
+    
+    
+if __name__ == "__main__":
+    obj = loginPage()
+    
+    
