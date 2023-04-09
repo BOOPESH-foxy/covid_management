@@ -3,7 +3,7 @@ import mysql.connector
 import sqlalchemyDbconnect as db
 import pwinput
 import os
-import tableCreation
+import dbProcess
 
 class loginPage:
     def __init__(self) -> None:
@@ -15,7 +15,7 @@ class loginPage:
         print("|\t\t\t COVID VACCINATION BOOKING \t\t\t|")
         name = input("\nId : \t")
         password = pwinput.pwinput(prompt="password : ",mask ="*")
-        tableCreation.dbProcesses.checkUserstatus(name,password)
+        dbProcess.dbProcesses.checkUserstatus(name,password)
     
     def pageSelection(self):
         pass
