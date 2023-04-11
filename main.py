@@ -13,9 +13,9 @@ class loginPage:
     def getData(self):
         os.system('clear')
         print("|\t\t\t COVID VACCINATION BOOKING \t\t\t|")
-        name = input("\nId : \t")
+        Id = int(input("\nId : \t"))
         password = pwinput.pwinput(prompt="password : ",mask ="*")
-        dbProcess.dbProcesses.checkUserstatus(name,password)
+        dbProcess.dbProcesses.checkUserstatus(Id,password)
     
     def pageSelection(self):
         pass
@@ -24,4 +24,3 @@ class loginPage:
 if __name__ == "__main__":
     mainObj = loginPage()
     mainObj.getData()
-    

@@ -4,7 +4,7 @@ class userStatus:
         pass
     
     def checkStatus(self):
-        
+        pass
 if __name__ == "__main__":
     Uobj = userStatus()
-    userStatus.che
+    Uobj.checkStatus

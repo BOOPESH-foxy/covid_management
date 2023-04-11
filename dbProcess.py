@@ -3,6 +3,7 @@ from sqlalchemy.orm import declarative_base, sessionmaker
 import sqlalchemyDbconnect
 from sqlalchemy.sql import schema
 import tableCreation
+
 engine = create_engine(sqlalchemyDbconnect.url)
 session = sessionmaker(bind=engine)
 Session = session()
@@ -17,7 +18,7 @@ class dbProcesses:
         Session.add(row)
         self.commit()
         
-    def checkUserstatus(self,Id,password):
+    def checkUserstatus(Id,password):
         inputId = Id
         password = password
         onlyStaff = Session.query(tableCreation.MyTable).filter(tableCreation.MyTable.isStaff == 1).all()
@@ -25,13 +26,11 @@ class dbProcesses:
             print(onlyStaff.Id)
         for inputId in onlyStaff.Id:
             if onlyStaff.password == password and onlyStaff.isStaff == 1:
-                self.userStatus = 1
+                userStatus = 1
     
-        
-        # sql_q= 'SELECT isadmin FROM Authentication where username like %s and passcode like %s'
-
+# sql_q= 'SELECT isadmin FROM Authentication where username like %s and passcode like %s'
 
     def commit():
         Session.commit()
         
-dbProcesses.checkUserstatus('boo','NULL')
+dbProcesses.checkUserstatus('boo','HEYboo@013')

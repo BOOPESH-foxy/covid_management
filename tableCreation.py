@@ -14,16 +14,16 @@ class MyTable(Base):
     Id = Column(Integer, primary_key=True)
     name = Column(String(255))
     isStaff = Column(Integer)
+    password = Column(VARCHAR(30))
+# metadata = MetaData()
+# my_table = Table('Authentication', metadata,
+#     Column('Id', Integer, primary_key=True),
+#     Column('name', String(255)),
+#     Column('isStaff',Integer)
+# )
 
-metadata = MetaData()
-my_table = Table('Authentication', metadata,
-    Column('Id', Integer, primary_key=True),
-    Column('name', String(255)),
-    Column('isStaff',Integer)
-)
+# new_column = Column('new_column', Integer)
+# my_table = my_table.append_column(new_column)
 
-new_column = Column('new_column', Integer)
-my_table = my_table.append_column(new_column)
-
-alter_query = text('ALTER TABLE Authentication ADD COLUMN password VARCHAR(30)')
-Session.execute(alter_query)
+# alter_query = text('ALTER TABLE Authentication ADD COLUMN password VARCHAR(30)')
+# Session.execute(alter_query)
