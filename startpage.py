@@ -1,5 +1,8 @@
 from os import system, name
 import time
+import tableCreation
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 
 class user():
     
@@ -14,5 +17,7 @@ class startPage():
     def __init__(self,Session):
         self.Session = Session
     
-    def createUser(self,name,password):
-        
+    def createUser(self,Id,name,password,isStaff):
+        newUser = tableCreation.MyTable(id = Id,name = name,password = password,isStaff = isStaff)
+        self.Session.add(newUser)
+        self.Session.commit()
