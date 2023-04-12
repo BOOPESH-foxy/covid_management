@@ -15,8 +15,8 @@ class loginPage:
         print("|\t\t\t COVID VACCINATION BOOKING \t\t\t|")
         Id = int(input("\nId : \t"))
         password = pwinput.pwinput(prompt="password : ",mask ="*")
-        dbProcess.dbProcesses.checkUserstatus(Id,password)
-    
+        # dbProcess.dbProcesses.checkUserstatus(Id,password)
+        
     def pageSelection(self):
         pass
     
