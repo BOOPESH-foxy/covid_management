@@ -37,17 +37,20 @@ class startPage():
         elif(login == 2):
             while True:
                 try:
-                    new_name:str = input("Enter your user name:")
-                    new_pass:str = input("Enter your password:")
-                    self.create_user(new_name,new_pass)
+                    newName:str = input("Enter your user name:")
+                    newPassword:str = input("Enter your password:")
+                    self.create_user(newName,newPassword)
                     print("Your account has been created \n redirecting you to slot booking page")
                     time.sleep(1)
-                    return user(new_name,0)
+                    return user(newName,0)
                 except Exception as e:
                     print("exeception",e)
                     retry:str = input("Do you want to try again [Y/n]:")
-                    if(retry =='n'):
+                    if(retry =='n' or retry == 'N'):
                         return user(0,0)
                     else:
                         system('clear')
                         pass
+                    
+object = startPage()
+object.pageStart()
