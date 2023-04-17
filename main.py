@@ -15,7 +15,7 @@ metadata = MetaData()
     
 if __name__ == "__main__":
     sql = Uc(session)
-    start_page = startPage(Session,metadata)
+    start_page = startPage(Session,metadata,engine=engine)
     start_Result:user = start_page.getData()
     system('clear')
     if(start_Result.userName != 0):

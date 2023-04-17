@@ -1,7 +1,7 @@
 from os import system, name
 import time
-import tableCreation
-from sqlalchemy import create_engine
+from tableCreation import MyTable
+from sqlalchemy import create_engine, select, Table, Column, Integer, String, MetaData
 from sqlalchemy.orm import sessionmaker
 import pwinput
 import os
@@ -18,9 +18,10 @@ class user():
            
 class startPage():
     
-    def __init__(self,session,metadata):
+    def __init__(self,session,metadata,engine):
         self.Session = session
         self.metadata = metadata
+        self.engine = engine
    
     def getData(self):
         os.system('clear')
@@ -30,15 +31,23 @@ class startPage():
         # dbProcess.dbProcesses.checkUserstatus(Id,password)
         
     def createUser(self,Id,name,password,isStaff):
-        newUser = tableCreation.MyTable(id = Id,name = name,password = password,isStaff = isStaff)
+        newUser = MyTable(id = Id,name = name,password = password,isStaff = isStaff)
         self.Session.add(newUser)
         self.Session.commit()
     
     def checkCredentials(self,name,password):
-        pass
-    
+        select_Statement = select(MyTable).where(MyTable.name == name and MyTable.password == password)
+        with self.engine.connect() as conn:
+            result = conn.execute(select_Statement).fetchone()
+        if result is not None:
+            print(result.value)
+            return 1
+        else:
+            print("User not found !")
+            return 0
+            
+            
     def pageStart(self):
-        
         login = int(input("[1] Login \n[2] Signup \nchoose [1-2]:"))
         system("clear")
         if(login == 1):
@@ -49,11 +58,13 @@ class startPage():
         elif(login == 2):
             while True:
                 try:
-                    newName:str = input("Enter your user name:")
-                    newPassword:str = input("Enter your password:")
+                    newName:str = input("Enter your user name   :")
+                    newPassword:str = input("Enter your password    :")
                     self.create_user(newName,newPassword)
-                    print("Your account has been created \n redirecting you to slot booking page")
+                    print("Your account has been created") 
                     time.sleep(1)
+                    system('clear')
+                    print("redirecting to slot booking page")
                     return user(newName,0)
                 except Exception as e:
                     print("exeception",e)
