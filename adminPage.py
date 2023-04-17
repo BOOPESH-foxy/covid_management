@@ -24,3 +24,6 @@ class AdminPage:
         mvResult = self.db.cursor.fetchall()
         mvResult.insert(0,["Slot id","Begining (HH:MM)","Ending (HH:MM)","Total Slots","Available Slots","Date"])
         print(tabulate(mvResult,showindex='always',headers='firstrow'))
+        
+    def pageStarup():
+        pass

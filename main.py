@@ -1,26 +1,26 @@
 from sqlalchemy import create_engine
-import mysql.connector
-import sqlalchemyDbconnect as db
+import sqlalchemyDbconnect,adminPage
 import pwinput
-import os
-import dbProcess
+from os import  system
+from sqlalchemy import create_engine,Table,VARCHAR, Column, Integer, String , MetaData,text
+from sqlalchemy.orm import declarative_base, sessionmaker
+from sqlalchemy.sql import schema
+import utilClass as Uc
+from startpage import startPage,user
 
-class loginPage:
-    def __init__(self) -> None:
-        pass
-
-    
-    def getData(self):
-        os.system('clear')
-        print("|\t\t\t COVID VACCINATION BOOKING \t\t\t|")
-        Id = int(input("\nId : \t"))
-        password = pwinput.pwinput(prompt="password : ",mask ="*")
-        # dbProcess.dbProcesses.checkUserstatus(Id,password)
-        
-    def pageSelection(self):
-        pass
-    
+engine = create_engine(sqlalchemyDbconnect.url)
+session = sessionmaker(bind=engine)
+Session = session()
+metadata = MetaData() 
     
 if __name__ == "__main__":
-    mainObj = loginPage()
-    mainObj.getData()
+    sql = Uc(session)
+    start_page = startPage(Session,metadata)
+    start_Result:user = start_page.getData()
+    system('clear')
+    if(start_Result.userName != 0):
+            if(start_Result.isStaff == 1):
+                admin_page = adminPage(sql,start_Result)
+                admin_page.page_start()
+            else:
+                pass

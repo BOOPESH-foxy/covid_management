@@ -3,6 +3,8 @@ import time
 import tableCreation
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+import pwinput
+import os
 
 class user():
     
@@ -12,11 +14,21 @@ class user():
         self.slotId = slotId
         self.hospitalId = hospital_id
         self.vaccinatedDate = date
-            
+           
+           
 class startPage():
-    def __init__(self,Session):
-        self.Session = Session
     
+    def __init__(self,session,metadata):
+        self.Session = session
+        self.metadata = metadata
+   
+    def getData(self):
+        os.system('clear')
+        print("|\t\t\t COVID VACCINATION BOOKING \t\t\t|")
+        Id = int(input("\nId : \t"))
+        password = pwinput.pwinput(prompt="password : ",mask ="*")
+        # dbProcess.dbProcesses.checkUserstatus(Id,password)
+        
     def createUser(self,Id,name,password,isStaff):
         newUser = tableCreation.MyTable(id = Id,name = name,password = password,isStaff = isStaff)
         self.Session.add(newUser)
