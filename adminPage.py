@@ -43,3 +43,18 @@ class AdminPage:
                         break
                     else:
                         pass
+                    
+        elif(admin_case == 2):
+            while(1):
+                self.view_new_applicants()
+                if(len(self.applicants)==1):
+                    system('clear')
+                    print("There are no users to approve")
+                    break
+                applicant_index = int(input("Enter your applicants index 1-{}:".format(len(self.applicants)-1)))
+                self.applicant_selected = self.applicants[applicant_index]
+                self.approve_applicants()
+                if(int(input("Do you want to continue approving? [0-1]:"))==0):
+                    break
+                else:
+                    pass
