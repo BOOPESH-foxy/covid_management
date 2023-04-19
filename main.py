@@ -24,3 +24,5 @@ if __name__ == "__main__":
                 admin_page.page_start()
             else:
                 pass
+    else:
+        print("Login failed")
